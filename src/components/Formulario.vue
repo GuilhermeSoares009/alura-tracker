@@ -6,7 +6,6 @@
             </div>
             <div class="column">
                 <Temporizador  @aoTemporizadorFinalizado="finalizarTarefa"/>
- 
             </div>
         </div>
     </div>
@@ -17,6 +16,7 @@ import { defineComponent } from 'vue';
 import Temporizador from './Temporizador.vue';
 export default defineComponent({
     name: 'Formulario',
+    emits:['aoSalvarTarefa'],
     data(){
         return {
             descricao:'',
@@ -27,6 +27,10 @@ export default defineComponent({
     },
     methods: {
          finalizarTarefa(tempoDecorrido: number) :void {
+            this.$emit('aoSalvarTarefa', {
+                duracaoEmSegundos: tempoDecorrido,
+                descricao: this.descricao
+            });
             this.descricao = '';
          }
     }
