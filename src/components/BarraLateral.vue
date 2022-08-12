@@ -3,6 +3,9 @@
         <h1>
             <img src="../assets/logo.png" alt="" >
         </h1>
+        <button class="button" @click="alterarTema">
+            {{textoBotao}}
+        </button>
     </header>
 </template>
 
@@ -10,6 +13,23 @@
 import { defineComponent } from 'vue';
 export default defineComponent({
     name: 'App',
+    emits: ['aoTermaAlterado'],
+    computed: {
+      textoBotao() {
+        return this.modoEscuroAtivo? 'Desativar modo claro' : 'Ativar modo escuro';
+      }
+    },
+    data() {
+        return {
+            modoEscuroAtivo: false
+        }
+    },
+    methods: {
+        alterarTema() {
+            this.modoEscuroAtivo = !this.modoEscuroAtivo;
+            this.$emit('aoTermaAlterado', this.modoEscuroAtivo);
+        }
+    }
 });
 </script>
 
