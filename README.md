@@ -1,5 +1,9 @@
 # alura-tracker
 
+## Link para o alura tracker online
+```
+https://alura-tracker-iota-indol.vercel.app/
+```
 ## Project setup
 ```
 yarn install
